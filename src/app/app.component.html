@@ -1,0 +1,33 @@
+<div *ngIf="fondo!='null'" style="
+width: 100%; 
+height: 100%; 
+position: fixed; 
+left: 0px; 
+top: 0px; 
+z-index: -1;">
+<img src="https://www.123freevectors.com/wp-content/original/108131-light-blue-wave.jpg" alt="" style="max-width: 100%;">
+</div>
+
+<nav *ngIf="navbar!='null'" class="navbar navbar-light justify-content-between navb">
+        <a class="navbar-brand" style="color:white" (click)="this.router.navigateByUrl('/peliculas')">Jnula</a>
+        <div class="form-inline">
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Buscar película" (keyup.enter)="buscarPelicula(buscarTexto.value)" #buscarTexto>
+                <button (click)="buscarPelicula(buscarTexto.value)"
+                    class="btn btn-outline-primary my-2 my-sm-0" type="button">Buscar</button>
+              </form>
+          <h6 style="margin-top: 10px; margin-left: 20px; color: white;">{{user}}</h6>
+          <div class="dropdown">
+      
+              <a data-toggle="dropdown" aria-haspopup="true"  id="dropdownMenuButton" aria-expanded="false" class="nav-profile-icon"  style="margin-left: 20px; margin-right: 50px;" ><img alt="profile" src="https://img.icons8.com/cotton/50/000000/name--v2.png">
+                <img src="/assets/img/flecha.png" style="max-width: 24px;" /></a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" (click)="irFavs()">Favoritos <img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeD0iMHB4IiB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MDEuMjggNTAxLjI4IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1MDEuMjggNTAxLjI4OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjE2cHgiIGhlaWdodD0iMTZweCI+CjxnPgoJPHBvbHlnb24gc3R5bGU9ImZpbGw6I0ZGQ0QwMDsiIHBvaW50cz0iNTAxLjI4LDE5NC4zNyAzMzUuMjYsMTU5LjMzIDI1MC42NCwxMi4yNyAyNTAuNjQsNDE5Ljc3IDQwNS41NCw0ODkuMDEgMzg3LjU2LDMyMC4yOSAgIi8+Cgk8cG9seWdvbiBzdHlsZT0iZmlsbDojRkZEQTQ0OyIgcG9pbnRzPSIxNjYuMDIsMTU5LjMzIDAsMTk0LjM3IDExMy43MiwzMjAuMjkgOTUuNzQsNDg5LjAxIDI1MC42NCw0MTkuNzcgMjUwLjY0LDEyLjI3ICAiLz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K" /></a>
+              <a class="dropdown-item" (click)="salir()">Desconectarse</a>
+            </div>
+          </div>
+          
+      
+        </div>
+      </nav>
+<router-outlet></router-outlet>

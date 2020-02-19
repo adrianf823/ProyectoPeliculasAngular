@@ -1,0 +1,70 @@
+
+<br>
+<h1 style="text-align: center; margin-top:50px;">LISTA PELICULAS</h1>
+<div class="row">
+  
+        <div style="position: absolute; right: 170px; top: 145px;">
+    <select #filter style="width: 200px; height: 35px; margin-right: 10px;" (change)="buscarPelicula(filter.value)">
+        <option hidden>{{filtro}}</option>
+        <option>Todos</option>
+        <option>Drama</option>
+        <option>Acción</option>
+        <option>Terror</option>
+        <option>Comedia</option>
+        <option>Ciencia ficción</option>
+        <option>Aventura</option>
+        <option>Misterio/Suspense</option>
+    </select>
+<a (click)="buscarPelicula(filter.value)"><img src="https://cdn.icon-icons.com/icons2/933/PNG/512/filter-results-button_icon-icons.com_72753.png" style="max-width: 40px;"></a>
+  </div>
+  <div class="col cols-12 sm-1" style="text-align: right; margin-right: 6%;">
+    <a class="btn  btn-circle cancel" (click)="anadirPelicula()" ><img style="max-width: 50px;" src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDUwIDUwIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1MCA1MDsiIHhtbDpzcGFjZT0icHJlc2VydmUiIHdpZHRoPSI2NHB4IiBoZWlnaHQ9IjY0cHgiPgo8Y2lyY2xlIHN0eWxlPSJmaWxsOiM0M0IwNUM7IiBjeD0iMjUiIGN5PSIyNSIgcj0iMjUiLz4KPGxpbmUgc3R5bGU9ImZpbGw6bm9uZTtzdHJva2U6I0ZGRkZGRjtzdHJva2Utd2lkdGg6MjtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQ7c3Ryb2tlLW1pdGVybGltaXQ6MTA7IiB4MT0iMjUiIHkxPSIxMyIgeDI9IjI1IiB5Mj0iMzgiLz4KPGxpbmUgc3R5bGU9ImZpbGw6bm9uZTtzdHJva2U6I0ZGRkZGRjtzdHJva2Utd2lkdGg6MjtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQ7c3Ryb2tlLW1pdGVybGltaXQ6MTA7IiB4MT0iMzcuNSIgeTE9IjI1IiB4Mj0iMTIuNSIgeTI9IjI1Ii8+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo=" /></a>
+</div>
+</div>
+<h3 style="margin-left: 7%;">{{peliculas.length}} películas encontradas: {{termino}}</h3>
+
+<div *ngIf="!cargando" >
+        <div class="card carta" style="background-color: white; margin-left: 5%; margin-right: 5%;margin-top: 3%;">
+<ng-container *ngFor="let pelicula of peliculas; let i = index">
+<div class="container-fluid" >
+    <div class="row">
+        <div class="col-12 mt-3">
+            <div class="card animated fadeIn fast" style="background-color: rgba(0, 0, 0, 0.7); margin-bottom: 2%;">
+                <div class="card-horizontal">
+                    <div class="img-square-wrapper">
+                            <img src={{pelicula.portada}} alt="Card image cap" style="width: 260px;height: 380px;">
+                    </div>
+                    <div class="card-body">
+                        <h2 class="card-title" style="color: white;">{{pelicula.titulo}}</h2>
+                        <h5 class="card-title" style="color: white;">{{pelicula.genero}}</h5>
+                        <p class="card-text" style="color: white;">{{pelicula.descripcion}}</p>
+                        <a class="btn btn-primary btn-circle" (click)="anadirFav(pelicula)"><img style="margin-bottom: 10px;" src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeD0iMHB4IiB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MDEuMjggNTAxLjI4IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1MDEuMjggNTAxLjI4OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjE2cHgiIGhlaWdodD0iMTZweCI+CjxnPgoJPHBvbHlnb24gc3R5bGU9ImZpbGw6I0ZGQ0QwMDsiIHBvaW50cz0iNTAxLjI4LDE5NC4zNyAzMzUuMjYsMTU5LjMzIDI1MC42NCwxMi4yNyAyNTAuNjQsNDE5Ljc3IDQwNS41NCw0ODkuMDEgMzg3LjU2LDMyMC4yOSAgIi8+Cgk8cG9seWdvbiBzdHlsZT0iZmlsbDojRkZEQTQ0OyIgcG9pbnRzPSIxNjYuMDIsMTU5LjMzIDAsMTk0LjM3IDExMy43MiwzMjAuMjkgOTUuNzQsNDg5LjAxIDI1MC42NCw0MTkuNzcgMjUwLjY0LDEyLjI3ICAiLz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K" /></a>
+                        <a class="btn btn-warning btn-circle" (click)="modificarPelicula(pelicula,i)" style="margin-left: 10px;"><img style="margin-bottom: 10px;" src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDM4My45NDcgMzgzLjk0NyIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMzgzLjk0NyAzODMuOTQ3OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjE2cHgiIGhlaWdodD0iMTZweCI+CjxnPgoJPGc+CgkJPGc+CgkJCTxwb2x5Z29uIHBvaW50cz0iMCwzMDMuOTQ3IDAsMzgzLjk0NyA4MCwzODMuOTQ3IDMxNi4wNTMsMTQ3Ljg5MyAyMzYuMDUzLDY3Ljg5MyAgICAiIGZpbGw9IiMwMDAwMDAiLz4KCQkJPHBhdGggZD0iTTM3Ny43MDcsNTYuMDUzTDMyNy44OTMsNi4yNGMtOC4zMi04LjMyLTIxLjg2Ny04LjMyLTMwLjE4NywwbC0zOS4wNCwzOS4wNGw4MCw4MGwzOS4wNC0zOS4wNCAgICAgQzM4Ni4wMjcsNzcuOTIsMzg2LjAyNyw2NC4zNzMsMzc3LjcwNyw1Ni4wNTN6IiBmaWxsPSIjMDAwMDAwIi8+CgkJPC9nPgoJPC9nPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo=" /></a>
+                        <a class="btn btn-danger btn-circle" (click)="eliminarPelicula(pelicula,i)" style="margin-left: 10px;"><img style="margin-bottom: 10px;" src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDUxMiA1MTIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxMiA1MTI7IiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iMTZweCIgaGVpZ2h0PSIxNnB4Ij4KPGc+Cgk8Zz4KCQk8Zz4KCQkJPHBvbHlnb24gcG9pbnRzPSIzNTMuNTc0LDE3Ni41MjYgMzEzLjQ5NiwxNzUuMDU2IDMwNC44MDcsNDEyLjM0IDM0NC44ODUsNDEzLjgwNCAgICAiIGZpbGw9IiMwMDAwMDAiLz4KCQkJPHJlY3QgeD0iMjM1Ljk0OCIgeT0iMTc1Ljc5MSIgd2lkdGg9IjQwLjEwNCIgaGVpZ2h0PSIyMzcuMjg1IiBmaWxsPSIjMDAwMDAwIi8+CgkJCTxwb2x5Z29uIHBvaW50cz0iMjA3LjE4Niw0MTIuMzM0IDE5OC40OTcsMTc1LjA0OSAxNTguNDE5LDE3Ni41MiAxNjcuMTA5LDQxMy44MDQgICAgIiBmaWxsPSIjMDAwMDAwIi8+CgkJCTxwYXRoIGQ9Ik0xNy4zNzksNzYuODY3djQwLjEwNGg0MS43ODlMOTIuMzIsNDkzLjcwNkM5My4yMjksNTA0LjA1OSwxMDEuODk5LDUxMiwxMTIuMjkyLDUxMmgyODYuNzQgICAgIGMxMC4zOTQsMCwxOS4wNy03Ljk0NywxOS45NzItMTguMzAxbDMzLjE1My0zNzYuNzI4aDQyLjQ2NFY3Ni44NjdIMTcuMzc5eiBNMzgwLjY2NSw0NzEuODk2SDEzMC42NTRMOTkuNDI2LDExNi45NzFoMzEyLjQ3NCAgICAgTDM4MC42NjUsNDcxLjg5NnoiIGZpbGw9IiMwMDAwMDAiLz4KCQk8L2c+Cgk8L2c+CjwvZz4KPGc+Cgk8Zz4KCQk8cGF0aCBkPSJNMzIxLjUwNCwwSDE5MC40OTZjLTE4LjQyOCwwLTMzLjQyLDE0Ljk5Mi0zMy40MiwzMy40MnY2My40OTloNDAuMTA0VjQwLjEwNGgxMTcuNjR2NTYuODE1aDQwLjEwNFYzMy40MiAgICBDMzU0LjkyNCwxNC45OTIsMzM5LjkzMiwwLDMyMS41MDQsMHoiIGZpbGw9IiMwMDAwMDAiLz4KCTwvZz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K" /></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</ng-container>
+        </div>
+    </div>
+<div *ngIf="cargando" 
+     class="alert alert-info text-center mt-3 animated fadeIn faster">
+  <h4 class="alert-heading">Cargando</h4>
+  <p>
+    <i class="fa fa-sync-alt fa-spin fa-2x"></i>
+  </p>
+  <p class="mb-0">
+    Espere por favor
+  </p>
+</div>
+<div *ngIf="!cargando && peliculas.length === 0"
+     class="alert alert-warning text-center mt-3 animated fadeIn faster">
+    <h4 class="alert-heading">No hay registros</h4>
+    <p>
+      <i class="fa fa-exclamation fa-2x"></i>
+    </p>
+</div>
+<br>

@@ -1,0 +1,38 @@
+.btn-circle.btn-xl {
+    width: 70px;
+    height: 70px;
+    padding: 10px 16px;
+    border-radius: 35px;
+    font-size: 24px;
+    line-height: 1.33;
+}
+
+.btn-circle {
+    width: 30px;
+    height: 30px;
+    padding: 6px 0px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.42857;
+}
+.card-horizontal {
+    display: flex;
+    flex: 1 1 auto;
+}
+
+.navb {
+    background-color: rgba(95,95,95,0.8);
+    width: 100%;
+    position: fixed;
+    z-index: 100;
+    margin-bottom: 20px;
+  }
+  a{ cursor: pointer; }
+  .carta{
+    background-image: url(http://www.hdfondos.eu/pictures/2015/1104/1/orig_309257.jpg)
+  }
+  .cancel:hover{
+    opacity: 0.8;
+}
+  

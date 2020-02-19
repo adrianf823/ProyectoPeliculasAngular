@@ -1,0 +1,50 @@
+<br>
+<h1 style="text-align: center; margin-top:50px;">FAVORITOS</h1>
+<ng-container *ngIf="!cargando">
+  <div class="row">
+
+<ng-container *ngFor="let pelicula of favoritos; let i = index">
+    <div class="col cols-12 col-sm-3">
+    <div class="card animated fadeIn fast" style="max-width: 260px; margin-bottom: 5%; margin-left: 10%;">
+        <img class="card-img-top img-fluid" [src]="pelicula.portada" style="width: 260px; height: 340px;">
+        <div class="card-body">
+          <h4 class="card-title">{{ pelicula.titulo }}</h4>
+          <div class="card-text"><small class="text-muted">{{ pelicula.genero }}</small>  <div class=" cancel" style="margin-left: 10px; margin-bottom: 10px; position: absolute; top: 0%; right: 0%; background-color:white; width: 30px; height: 40px;"><button type="button" class="close" aria-label="Close"
+            (click)="eliminarFav(pelicula,i)" style=" color: red; margin-right: 25%; margin-top: 25%;">X
+           </button></div></div>
+      
+          <button (click)="buscarPelicula(pelicula.titulo)"
+            type="button" class="btn btn-outline-primary btn-block">
+            Ver más...
+          </button>
+          <!-- <a [routerLink]="['/heroe',i]" class="btn btn-outline-primary">Ver más link...</a> -->
+      
+        </div>
+      </div>
+    </div>
+</ng-container>
+
+  </div>
+<div *ngIf="!cargando && favoritos.length === 0"
+     class="alert alert-warning text-center mt-3 animated fadeIn faster">
+      <h4 class="alert-heading">Esta cuenta todavía no tiene favoritos</h4>
+    <p>
+      <i class="fa fa-exclamation fa-2x"></i>
+    </p>
+</div>
+
+<div *ngIf="cargando" 
+     class="alert alert-info text-center mt-3 animated fadeIn faster">
+  <h4 class="alert-heading">Cargando</h4>
+  <p>
+    <i class="fa fa-sync-alt fa-spin fa-2x"></i>
+  </p>
+  <p class="mb-0">
+    Espere por favor
+  </p>
+</div>
+
+</ng-container>
+<button class="btn btn-primary" (click)="volver()" style="margin-left: 2%;">Volver</button>
+<br>
+<br>
